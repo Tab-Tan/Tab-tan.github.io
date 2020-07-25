@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tab-tan.github.io/"/>
-  <updated>2020-07-25T09:08:59.049Z</updated>
+  <updated>2020-07-25T12:51:20.073Z</updated>
   <id>http://tab-tan.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>搭建博客.md</title>
+    <link href="http://tab-tan.github.io/2020/07/25/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://tab-tan.github.io/2020/07/25/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</id>
+    <published>2020-07-25T11:40:38.000Z</published>
+    <updated>2020-07-25T12:51:20.073Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><h3 id="github-hexo搭建个人博客"><a href="#github-hexo搭建个人博客" class="headerlink" title="github+hexo搭建个人博客"></a>github+hexo搭建个人博客</h3><hr><h2 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h2><ol><li>安装nodejs<blockquote><p>前往nodejs官网下载安装<br>链接-<a href="http://nodejs.cn/download/" target="_blank" rel="noopener">http://nodejs.cn/download/</a></p></blockquote></li><li>安装hexo<blockquote><p>npm install -g hexo-cli(建议安装淘宝cnpm更快你懂的~)</p></blockquote></li><li>创建博客文件夹<blockquote><p>mkdir blog</p></blockquote></li></ol><p>如图:<br> <img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/Tab-tan/CDN@1.1/pic/dir.png" alt="创建文件夹"></p><ol start="4"><li><p>初始化hexo</p><blockquote><p>打开命令行进入创建好的blog命令行开始操作~<br>hexo init</p></blockquote></li><li><p>小操作</p><blockquote><p>hexo n 博客标题:创建文章<br>hexo clean | g(生成) | s(本地服务)</p></blockquote></li><li><p>安装插件</p><blockquote><p>npm install –save hexo-deployer-git</p></blockquote></li><li><p>修改_config.yml文件</p><blockquote><p>deploy:<br>type: ‘git’<br>repo: ‘<a href="https://github.com/Tab-Tan/Tab-tan.github.io.git&#39;" target="_blank" rel="noopener">https://github.com/Tab-Tan/Tab-tan.github.io.git&#39;</a><br>branch: ‘master’</p></blockquote></li><li><p>远程部署</p><blockquote><p>hexo d</p></blockquote></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;环境&quot;&gt;&lt;a href=&quot;#环境&quot; class=&quot;headerlink&quot; title=&quot;环境&quot;&gt;&lt;/a&gt;环境&lt;/h2&gt;&lt;h3 id=&quot;github-hexo搭建个人博客&quot;&gt;&lt;a href=&quot;#github-hexo搭建个人博客&quot; class=&quot;headerlink
+      
+    
+    </summary>
+    
+    
+      <category term="其他" scheme="http://tab-tan.github.io/categories/%E5%85%B6%E4%BB%96/"/>
+    
+    
+      <category term="搭建" scheme="http://tab-tan.github.io/tags/%E6%90%AD%E5%BB%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>我的第一篇博客</title>
