@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://tab-tan.github.io/tags/index.html</loc>
+    
+    <lastmod>2020-07-25T09:22:32.305Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tab-tan.github.io/categories/index.html</loc>
+    
+    <lastmod>2020-07-25T09:21:54.984Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://tab-tan.github.io/2020/07/24/hello-world/</loc>
     
     <lastmod>2020-07-25T09:10:15.392Z</lastmod>
