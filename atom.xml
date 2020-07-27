@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tab-tan.github.io/"/>
-  <updated>2020-07-27T02:37:25.275Z</updated>
+  <updated>2020-07-27T23:49:11.920Z</updated>
   <id>http://tab-tan.github.io/</id>
   
   <author>
@@ -15,6 +15,72 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>方法引用</title>
+    <link href="http://tab-tan.github.io/2020/07/28/%E6%96%B9%E6%B3%95%E5%BC%95%E7%94%A8/"/>
+    <id>http://tab-tan.github.io/2020/07/28/%E6%96%B9%E6%B3%95%E5%BC%95%E7%94%A8/</id>
+    <published>2020-07-27T23:36:04.000Z</published>
+    <updated>2020-07-27T23:49:11.920Z</updated>
+    
+    <content type="html"><![CDATA[<p><em>引入：在JVM中，将符号引用转换为调用方法的直接引用与方法的绑定机制相关。</em></p><p>以下介绍关于方法引用的概念</p><hr><h3 id="方法的静态链接与动态链接"><a href="#方法的静态链接与动态链接" class="headerlink" title="方法的静态链接与动态链接"></a>方法的静态链接与动态链接</h3><blockquote><h4 id="静态链接"><a href="#静态链接" class="headerlink" title="静态链接"></a>静态链接</h4><p>一个字节码文件被装载进JVM内部时，如果被调用的目标方法在编译期间可知，且运行期间保持不变时。这种情况下将调用方法的符号引用转换为直接引用的过程叫做静态链接。</p><h4 id="动态链接"><a href="#动态链接" class="headerlink" title="动态链接"></a>动态链接</h4><p>如果被调用的方法在编译期间无法确定，只能在程序运行期将调用方法的符号引用转换为直接引用，由于这种引用转换过程具备动态性，因此也就被称为动态链接。</p></blockquote><h3 id="早期绑定与晚期绑定"><a href="#早期绑定与晚期绑定" class="headerlink" title="早期绑定与晚期绑定"></a>早期绑定与晚期绑定</h3><blockquote><h4 id="早期绑定"><a href="#早期绑定" class="headerlink" title="早期绑定"></a>早期绑定</h4><p>被调用的目标方法如果在编译期可知，且运行期保持不变时，即可将这个方法与所属类型进行绑定，这样一来，由于明确了被调用的目标方法究竟是哪一个，因此也就可以使用静态链接的方式将符号引用转换为直接引用。</p><h4 id="晚期绑定"><a href="#晚期绑定" class="headerlink" title="晚期绑定"></a>晚期绑定</h4><p>如果被调用的方法在编译期无法被确定下来，只能够在程序运行期根据实际的类型绑定相关的方法，这种绑定方式也就被称之为晚期绑定。</p></blockquote><h3 id="非虚方法与虚方法"><a href="#非虚方法与虚方法" class="headerlink" title="非虚方法与虚方法"></a>非虚方法与虚方法</h3><blockquote><ul><li>编译期就确定了具体的调用版本，这个版本在运行时是不可变的。</li><li>静态方法、私有方法、final方法、实例构造器、父类方法都是非虚方法。</li><li>其他的都是虚方法。</li></ul></blockquote><h3 id="虚拟机中提供了以下几条方法调用指令"><a href="#虚拟机中提供了以下几条方法调用指令" class="headerlink" title="虚拟机中提供了以下几条方法调用指令"></a>虚拟机中提供了以下几条方法调用指令</h3><blockquote><h4 id="普通调用指令"><a href="#普通调用指令" class="headerlink" title="普通调用指令"></a>普通调用指令</h4><ol><li><strong>invokestatic</strong>：调用静态方法，解析阶段确定唯一方法版本</li><li><strong>invokespecial</strong>：调用&lt;init&gt;方法、私有及父类方法，解析阶段确定唯一方法版本</li><li><strong>invokevirtual</strong>：调用所有虚方法</li><li><strong>invokeinterface</strong>：调用接口方法<h4 id="动态调用指令"><a href="#动态调用指令" class="headerlink" title="动态调用指令"></a>动态调用指令</h4></li><li><strong>invokedynamic</strong>：动态解析出需要调用的方法，然后执行</li></ol><p><em>前四条指令固化在虚拟机内部，方法的调用执行不可认为干预，而invokedynamic指令则支持用户确定方法版本。其中invokestatic指令和invokespecial指令调用的方法称为非虚方法，其余的(final修饰的除外)称为虚方法。</em></p></blockquote><h3 id="虚方法表"><a href="#虚方法表" class="headerlink" title="虚方法表"></a>虚方法表</h3><blockquote><p>虚方法表：为了提高性能，在类的加载中的解析的环节创建。</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;em&gt;引入：在JVM中，将符号引用转换为调用方法的直接引用与方法的绑定机制相关。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;以下介绍关于方法引用的概念&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;方法的静态链接与动态链接&quot;&gt;&lt;a href=&quot;#方法的静态链接与动态链接&quot; class=&quot;headerl
+      
+    
+    </summary>
+    
+    
+      <category term="JVM" scheme="http://tab-tan.github.io/categories/JVM/"/>
+    
+    
+      <category term="基础" scheme="http://tab-tan.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="JVM" scheme="http://tab-tan.github.io/tags/JVM/"/>
+    
+      <category term="栈" scheme="http://tab-tan.github.io/tags/%E6%A0%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>虚拟机栈</title>
+    <link href="http://tab-tan.github.io/2020/07/27/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88/"/>
+    <id>http://tab-tan.github.io/2020/07/27/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88/</id>
+    <published>2020-07-27T14:50:12.000Z</published>
+    <updated>2020-07-27T23:34:03.259Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><pre><code>调整虚拟机栈的大小的参数 -Xss    </code></pre></blockquote><hr><h3 id="栈的结构"><a href="#栈的结构" class="headerlink" title="栈的结构"></a>栈的结构</h3><p><em>栈有一个个栈帧组成</em><br>|–栈<br>|—-|–栈帧<br>|—-|—-|–<strong>局部变量表</strong><br>|—-|—-|–<strong>操作数栈</strong><br>|—-|—-|–方法返回地址<br>|—-|—-|–动态链接<br>|—-|—-|–一些附加信息</p><p>如图：<br><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/Tab-tan/CDN@1.1.7/pic/zz.png" alt="结构"></p><h3 id="局部变量表"><a href="#局部变量表" class="headerlink" title="局部变量表"></a>局部变量表</h3><blockquote><ol><li>也被称为局表变量数组或本地变量表，是一个数字数组。</li><li>记录基本数据类型和对象的引用和返回值类型。</li><li>局部变量表的大小在编译器就被确定不会改变。</li><li>基本存储单元：slot（变量槽）</li><li>32位以内的类型只占用一个槽，64位（long、double）占用两个槽</li><li>实例方法中局部变量表的首位存放this</li><li>注意solt重复利用的问题</li><li>局部变量表中的变量也是重要的垃圾回收根节点，只要被局部</li><li><strong>变量表中直接或间接引用的对象都不会被回收。</strong></li></ol></blockquote><h3 id="操作数栈"><a href="#操作数栈" class="headerlink" title="操作数栈"></a>操作数栈</h3><blockquote><ol><li><strong>主要用于保存计算过程的中间结果，同时作为计算过程中变量临时的存储空间</strong></li><li>方法刚执行的时候，一个新的栈帧会被创建，<strong>这个方法的操作数栈是空的</strong></li><li><strong>如果调用的方法带有返回值，返回值会被压入当前栈帧的操作数栈</strong></li><li>操作数栈有明确的长度，为方法的code属性中的max_stack的值</li><li>操作数栈<strong>并非采用索引的方式来进行数据访问</strong></li><li>JVM的<strong>解释引擎是基于栈的执行引擎</strong>，其中的栈指的是操作数栈</li></ol></blockquote><h3 id="动态链接（指向运行时常量池的方法引用）"><a href="#动态链接（指向运行时常量池的方法引用）" class="headerlink" title="动态链接（指向运行时常量池的方法引用）"></a>动态链接（指向运行时常量池的方法引用）</h3><blockquote><ol><li>每一个栈帧内部都包含一个指向运行时常量池中该栈帧所属方法的引用。</li><li>在Java源文件被编译到字节码文件中时，<strong>所有的变量和方法引用都作为符号引用保存在class文件的常量池里</strong>。</li><li><strong>动态链接的作用就是为了将这些符号引用转换为调用方法的直接引用</strong>。</li></ol></blockquote><h3 id="方法调用（提出去）"><a href="#方法调用（提出去）" class="headerlink" title="方法调用（提出去）"></a>方法调用（提出去）</h3><h3 id="方法返回地址"><a href="#方法返回地址" class="headerlink" title="方法返回地址"></a>方法返回地址</h3><blockquote><ul><li>存储该方法PC寄存器的值</li><li>一个方法的结束有两种方式<ul><li>正常执行结束</li><li>出现未处理异常，非正常退出</li></ul></li><li>无论通过哪种方式退出，在方法退出后都会返回该方法被调用的位置。方法正常退出时，<strong>调用者的pc计数器的值作为返回地址，即调用该方法的指令的下一条指令的地址</strong>。而通过异常退出的，返回地址是要通过异常表来确定，栈帧中一般不会保存着部分信息。</li></ul></blockquote><h3 id="一些附加信息"><a href="#一些附加信息" class="headerlink" title="一些附加信息"></a>一些附加信息</h3><blockquote><ul><li>栈帧中还允许携带与Java虚拟机实现相关的一些附加信息。例如对程序调试提供支持的信息。</li><li>其中方法返回地址、动态链接、一些附加信息称为帧数据区</li></ul></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;调整虚拟机栈的大小的参数 -Xss    &lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;栈的结构&quot;&gt;&lt;a href=&quot;#栈的结构&quot; class=&quot;headerlink&quot; title=&quot;栈的结构&quot;&gt;&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="JVM" scheme="http://tab-tan.github.io/categories/JVM/"/>
+    
+    
+      <category term="基础" scheme="http://tab-tan.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="JVM" scheme="http://tab-tan.github.io/tags/JVM/"/>
+    
+      <category term="栈" scheme="http://tab-tan.github.io/tags/%E6%A0%88/"/>
+    
+  </entry>
   
   <entry>
     <title>类加载器</title>
@@ -38,9 +104,9 @@
       <category term="JVM" scheme="http://tab-tan.github.io/categories/JVM/"/>
     
     
-      <category term="JVM" scheme="http://tab-tan.github.io/tags/JVM/"/>
-    
       <category term="基础" scheme="http://tab-tan.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="JVM" scheme="http://tab-tan.github.io/tags/JVM/"/>
     
       <category term="类加载器" scheme="http://tab-tan.github.io/tags/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8/"/>
     
@@ -69,11 +135,11 @@
       <category term="JVM" scheme="http://tab-tan.github.io/categories/JVM/"/>
     
     
+      <category term="基础" scheme="http://tab-tan.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
       <category term="JVM" scheme="http://tab-tan.github.io/tags/JVM/"/>
     
       <category term="机制" scheme="http://tab-tan.github.io/tags/%E6%9C%BA%E5%88%B6/"/>
-    
-      <category term="基础" scheme="http://tab-tan.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
@@ -99,9 +165,9 @@
       <category term="JVM" scheme="http://tab-tan.github.io/categories/JVM/"/>
     
     
-      <category term="JVM" scheme="http://tab-tan.github.io/tags/JVM/"/>
-    
       <category term="基础" scheme="http://tab-tan.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="JVM" scheme="http://tab-tan.github.io/tags/JVM/"/>
     
       <category term="类的加载" scheme="http://tab-tan.github.io/tags/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD/"/>
     
