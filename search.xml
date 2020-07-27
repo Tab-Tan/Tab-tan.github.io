@@ -4,6 +4,64 @@
   
     
     <entry>
+      <title>类加载器</title>
+      <link href="/2020/07/27/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8/"/>
+      <url>/2020/07/27/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8/</url>
+      
+        <content type="html"><![CDATA[<h3 id="各层级类加载器的关系"><a href="#各层级类加载器的关系" class="headerlink" title="各层级类加载器的关系"></a>各层级类加载器的关系</h3><p><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/Tab-tan/CDN@1.1.6/pic/clgx.png" alt="类加载器" title="类加载器"></p><h4 id="ClassLoader的继承树"><a href="#ClassLoader的继承树" class="headerlink" title="ClassLoader的继承树"></a>ClassLoader的继承树</h4><p><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/Tab-tan/CDN@1.1.6/pic/ClassLoader.png" alt=""></p><h3 id="类加载器的分类"><a href="#类加载器的分类" class="headerlink" title="类加载器的分类"></a>类加载器的分类</h3><h4 id="虚拟机自带的加载器"><a href="#虚拟机自带的加载器" class="headerlink" title="虚拟机自带的加载器"></a>虚拟机自带的加载器</h4><blockquote><ul><li>启动类加载器（引导类加载器  Bootstrap ClassLoader）<ul><li>使用c/c++实现的，嵌套在JVM内部</li><li>用来加载Java的核心库，用于提供JVM自身需要的类</li><li>并不继承自java.lang.ClassLoader，没有父加载器</li><li>加载扩展类和应用程序类加载器，并指定为他们的父类加载器</li><li>只加载包名为java、javax、sun等开头的类</li></ul></li><li>扩展类加载器（Extension ClassLoader）<ul><li>Java编写，由sun.misc.Launcher$ExtClassLoader实现</li><li>派生于ClassLoader类</li><li>父类加载器为启动类加载器</li><li>从java.ext.dirs系统属性所指定的目录中加载类库，或从JDK的安装目录jre/lib/ext子目录(扩展目录)下加载类库。如果用户创建的JAR放在此目录下，也会自动由扩展类加载器加载。</li></ul></li><li>应用程序类加载器（系统类加载器 AppClassLoader）<ul><li>java编写，由sun.misc.Launcher$AppClassLoader实现</li><li>派生于ClassLoader类</li><li>父类加载器为扩展类加载器</li><li>负责加载环境变量classpath或系统属性java.class.path指定路径下的类库</li><li>该类加载是程序中默认的类加载器，一般来说，Java应用的类都是由它来完成加载</li><li>通过ClassLoader#getSystemClassLoader()方法可以获取到该类加载器</li></ul></li><li>用户自定义类加载器<ul><li>为什么要自定义类的加载器？<ul><li>隔离加载类</li><li>修改类加载方式</li><li>扩展加载源</li><li>防止源码泄漏</li></ul></li><li>实现步骤<br><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/Tab-tan/CDN@1.1.6/pic/zdycl.png" alt=""></li></ul></li></ul></blockquote><h3 id="ClassLoader"><a href="#ClassLoader" class="headerlink" title="ClassLoader"></a>ClassLoader</h3><blockquote><p>ClassLoader类，他是一个抽象类，其后所有的类加载器都继承自ClassLoader(不包括启动类加载器) 常用方法如下表:</p></blockquote><table><thead><tr><th align="center">方法</th><th align="center">描述</th></tr></thead><tbody><tr><td align="center">getParent()</td><td align="center">返回该类加载器的超类加载器</td></tr><tr><td align="center">loadClass(String name)</td><td align="center">加载名称为name的类，返回java.lang.Class类的实例</td></tr><tr><td align="center">findClass(String name)</td><td align="center">查找名为name的类，返回java.lang.Class类的实例</td></tr><tr><td align="center">findLoadedClass(String name)</td><td align="center">查找名为name的已经被加载过的类，返回结果为java.lang.Class类的实例</td></tr><tr><td align="center">defineClass(String name,byte[] b,int off,int len)</td><td align="center">把字节数组b中的内容转换为一个java类，返回结果为java.lang.Class类的实例</td></tr><tr><td align="center">resolveClass(Class&lt;?&gt;c)</td><td align="center">链接指定的一个java类</td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> JVM </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JVM </tag>
+            
+            <tag> 基础 </tag>
+            
+            <tag> 类加载器 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>双亲委派机制</title>
+      <link href="/2020/07/27/%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6/"/>
+      <url>/2020/07/27/%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6/</url>
+      
+        <content type="html"><![CDATA[<h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><blockquote><p>Java虚拟机对class文件采用的是<strong>按需加载</strong>的方式，也就是说当需要使用该类时才会将它的class文件加载到内存生成class对象。而且加载某个类的class时，Java虚拟机采用的是<strong>双亲委派模式</strong>，即把请求交由父类处理，它是一种任务委派模式。</p></blockquote><h3 id="双亲委派机制工作原理"><a href="#双亲委派机制工作原理" class="headerlink" title="双亲委派机制工作原理"></a>双亲委派机制工作原理</h3><blockquote><ol><li>如果一个类加载器收到了类加载请求，它并不会自己先去加载，而是把这个请求委托给父类的加载器去执行</li><li>如果父类加载器还存在父类加载器，则进一步向上委托，依次递归，请求最终将到达顶层的启动类加载器</li><li>如果父类加载器可以完成加载任务，就成功返回，若不能完成则子加载器才会尝试自己加载</li></ol></blockquote><p>图示：</p><p><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/Tab-tan/CDN@1.1.5/pic/clipboard.png" alt="双亲委派机制" title="双亲委派机制"></p><h3 id="双亲委派机制优势"><a href="#双亲委派机制优势" class="headerlink" title="双亲委派机制优势"></a>双亲委派机制优势</h3><blockquote><ol><li>避免类的重复加载</li><li>保护程序安全，防止核心API被随意篡改</li></ol></blockquote><h3 id="沙箱安全机制"><a href="#沙箱安全机制" class="headerlink" title="沙箱安全机制"></a>沙箱安全机制</h3><blockquote><p>在加载类的时候遇到用户自定义如java.lang包的类时，这个类会被委派到引导类加载器。引导类加载器会对此类进行校验，假如此类不是核心库中的类则会直接报错终止程序。这种安全校验就是沙箱安全机制，对jvm和程序起到了保护作用。</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> JVM </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JVM </tag>
+            
+            <tag> 机制 </tag>
+            
+            <tag> 基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>类的加载过程</title>
       <link href="/2020/07/26/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/"/>
       <url>/2020/07/26/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/</url>
@@ -20,9 +78,9 @@
       
         <tags>
             
-            <tag> 基础 </tag>
-            
             <tag> JVM </tag>
+            
+            <tag> 基础 </tag>
             
             <tag> 类的加载 </tag>
             
