@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>堆区</title>
+      <link href="/2020/07/29/%E5%A0%86%E5%8C%BA/"/>
+      <url>/2020/07/29/%E5%A0%86%E5%8C%BA/</url>
+      
+        <content type="html"><![CDATA[<h3 id="堆的细分内存结构"><a href="#堆的细分内存结构" class="headerlink" title="堆的细分内存结构"></a>堆的细分内存结构</h3><blockquote><p>现代垃圾收集器大部分都基于分代收集理论设计，堆空间细分为:</p><ul><li>Java 7及以前内存逻辑上分为三个部分：新生区+养老区+永久区<ul><li>Young Generation Space    新生区    Young/New<ul><li>又被划分为Eden区和Survivor区</li></ul></li><li>Tenure generation Space    养老区    Old/Tenure</li><li>Permanent Space                永久区    Perm</li></ul></li><li>Java 8及之后堆内存逻辑上分为三部分：新生区+养老区+元空间<ul><li>Young Generation Space    新生区    Young/New<ul><li>又被划分为Eden区和Survivor区</li></ul></li><li>Tenure generation Space    养老区    Old/Tenure</li><li>Meta Space                          元空间    Meta</li></ul></li></ul><p><em>约定：新生区=新生代=年轻代 | 养老区=老年区=老年代 | 永久区=永久代</em></p></blockquote><h3 id="堆空间大小的设置"><a href="#堆空间大小的设置" class="headerlink" title="堆空间大小的设置"></a>堆空间大小的设置</h3><blockquote><ul><li>Java堆区用于存储Java对象实例，那么堆的大小在JVM启动时就已经设定好了，大家可以通过选项”-Xmx”和”-Xms”来进行设置。<ul><li>“-Xms”用于表示堆区的起始内存，等价于-XX:InitialHeapSize</li><li>“-Xmx”则用于表示堆区的最大内存，等价于-XX:MaxHeapSize</li></ul></li><li>一旦堆区的内存大小超过”-Xmx”所指定的内存时，将会抛出OutOfMemoryError异常。</li><li>通常会将 -Xms和 -Xmx两个参数配置相同的值，其目的是为了能够在java垃圾回收机制清理完堆区后不需要重新分隔计算堆区的大小，从而提高性能。</li><li>默认情况下，初始内存大小：物理电脑内存大小/64，最大内存大小：物理电脑内存大小/4</li></ul></blockquote><h3 id="年轻代与老年代"><a href="#年轻代与老年代" class="headerlink" title="年轻代与老年代"></a>年轻代与老年代</h3><blockquote><p>配置新生代与老年代在堆结构的占比</p><ul><li>默认-XX:NewRatio=2，表示新生代占1，老年代占2，新生代占整个堆的1/3<br><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/Tab-tan/CDN@1.1.9/pic/%E6%96%B0%E7%94%9F%E4%BB%A3%E4%B8%8E%E8%80%81%E5%B9%B4%E4%BB%A3.png" alt="年轻代与老年代"></li><li>可以修改-XX:NewRatio=4，表示新生代占1，老年代占4，新生代占整个堆的1/5</li><li>几乎所有的Java对象都是在Eden区被new出来的</li><li>绝大部分的Java对象的销毁都在新生代进行了</li><li>可以使用选项”-Xmn”设置新生代最大内存大小<ul><li>这个参数一般使用默认值就可以了</li></ul></li></ul></blockquote><h3 id="对象的分配"><a href="#对象的分配" class="headerlink" title="对象的分配"></a>对象的分配</h3><blockquote><p><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/Tab-tan/CDN@1.1.9/pic/%E5%AF%B9%E8%B1%A1%E6%99%8B%E5%8D%87.png" alt="对象晋升"><br>对象分配总结:</p><ul><li><strong>针对幸存者s0，s1区：复制之后有交换，谁空谁是to</strong></li><li><strong>关于垃圾回收：频繁在新生区收集，很少在养老区收集，几乎不在永久区/元空间收集</strong></li></ul></blockquote><h3 id="特殊情况"><a href="#特殊情况" class="headerlink" title="特殊情况"></a>特殊情况</h3><p><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/Tab-tan/CDN@1.1.9/pic/%E5%A0%86%E5%86%85%E6%99%8B%E5%8D%87%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt="对象晋升流程图"></p><h3 id="Minor-GC-Major-GC-Full-GC"><a href="#Minor-GC-Major-GC-Full-GC" class="headerlink" title="Minor GC Major GC Full GC"></a>Minor GC Major GC Full GC</h3><blockquote><p>JVM在进行GC时，并非每次都对上面三个内存（新生代、老年代；方法区）区域一起回收的，大部分时候回收的都是指新生代。<br>针对Hotspot VM的实现，它里面的GC按照回收区域又分为两大类型：一种是部分收集（Partial GC），一种是 整堆收集（Full GC）</p><ul><li>部分收集<ul><li>新生代收集(Minor GC/Young GC)：只是新生代(Eden,s0,s1)的垃圾收集</li><li>老年代收集(Major GC/Old GC)：只是老年代的垃圾收集<ul><li>目前，只有CMS GC会有单独收集老年代的行为。</li><li><strong>注意，很多时候Major GC会和Full GC混淆使用，需要具体分辨是老年代回收还是整堆回收。</strong></li></ul></li><li>混合收集（Mixed GC）：收集整个新生代以及部分老年代的垃圾收集<ul><li>目前只有G1 GC会有这种行为</li></ul></li></ul></li><li>整堆收集（Full GC）：收集整个Java堆和方法区的垃圾收集</li></ul></blockquote><h3 id="分代式GC策略的触发条件"><a href="#分代式GC策略的触发条件" class="headerlink" title="分代式GC策略的触发条件"></a>分代式GC策略的触发条件</h3><blockquote><ul><li>年轻代GC(Minor GC)触发机制<ul><li>当年轻代空间不足时，就会触发Minor GC，这里的年轻代满指的是Eden代满，Survivor满不会引发GC。（每次Minor GC会清理年轻代的内存）</li><li>因为Java对象大多都具备朝生夕灭的特性，所以Minor GC非常频繁，一般回收速度比较快。</li><li>Minor GC会引发STW，暂停其他用户线程，等垃圾回收结束，用户线程才恢复运行</li></ul></li><li>老年代GC（Major GC/Full GC）触发机制<ul><li>发生在老年代的GC，对象从老年代消失时，Major GC或Full GC发生了</li><li>出现了major GC，经常会伴随至少一次的Minor GC（但非绝对的，在Parallel Scavenge收集器的收集策略里就有直接进行Major GC的策略选择过程）<ul><li>也就是在老年代空间不足时，会先尝试触发Minor GC。如果之后空间还不足则会触发Major GC</li></ul></li><li>Major GC的速度一般比Minor GC慢10倍以上，STW的时间更长</li><li>如果Major GC后内存还不足则OOM（内存溢出）</li></ul></li><li>Full GC触发机制（提出去）<ul><li>调用System.gc()时，系统建议执行Full GC，但是不必然执行</li><li>老年代空间不足</li><li>方法区空间不足</li><li>通过Minor GC后进入老年代的平均大小大于老年代的可用内存</li><li>由Eden区、survivor space0（From Space）区向survivor space1(To Space)区复制时，对象大小大于To Space可用内存，则把对象转存到老年代，且老年代的可用内存大小小于该对象大小<ul><li>说明：Full GC是开发或调优中尽量要避免的。这样暂停时间会短一些。</li></ul></li></ul></li></ul></blockquote><h3 id="对象分配过程：TLAB"><a href="#对象分配过程：TLAB" class="headerlink" title="对象分配过程：TLAB"></a>对象分配过程：TLAB</h3><h4 id="为什么有TLAB（Thread-Local-Allocation-Buffer）"><a href="#为什么有TLAB（Thread-Local-Allocation-Buffer）" class="headerlink" title="为什么有TLAB（Thread Local Allocation Buffer）?"></a>为什么有TLAB（Thread Local Allocation Buffer）?</h4><blockquote><ul><li>堆区是线程共享区域，任何线程都可以访问到堆区中的共享数据</li><li>由于对象实例的创建在JVM中非常频繁，因为在并发环境下从堆区中划分内存空间是线程不安全的</li><li>为避免多个线程操作同一个地址，需要使用加锁等机制，进而影响分配速度。<br>什么是TLAB？</li><li>从内存模型而不是垃圾收集的角度，堆Eden区域继续进行划分，JVM为每个线程分配了一个私有缓存区域，它包含在Eden空间内。</li><li>多线程同时分配内存时，使用TLAB可以避免一系列的非线程安全问题，同时还能够提升内存分配的吞吐量，因为我们可以将这种内存分配方式称之为快速分配策略。</li><li>OpenJDK衍生出来的JVM都提供了TLAB的设计。</li></ul></blockquote><p><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/Tab-tan/CDN@1.1.10/pic/TLAB%E8%AF%B4%E6%98%8E.png" alt="TLAB说明"></p><p><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/Tab-tan/CDN@1.1.10/pic/TLAB.png" alt="TLAB说明"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> JVM </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 基础 </tag>
+            
+            <tag> JVM </tag>
+            
+            <tag> 堆 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>方法引用</title>
       <link href="/2020/07/28/%E6%96%B9%E6%B3%95%E5%BC%95%E7%94%A8/"/>
       <url>/2020/07/28/%E6%96%B9%E6%B3%95%E5%BC%95%E7%94%A8/</url>
@@ -20,9 +49,9 @@
       
         <tags>
             
-            <tag> JVM </tag>
-            
             <tag> 基础 </tag>
+            
+            <tag> JVM </tag>
             
             <tag> 栈 </tag>
             
@@ -49,9 +78,9 @@
       
         <tags>
             
-            <tag> JVM </tag>
-            
             <tag> 基础 </tag>
+            
+            <tag> JVM </tag>
             
             <tag> 栈 </tag>
             
@@ -78,9 +107,9 @@
       
         <tags>
             
-            <tag> JVM </tag>
-            
             <tag> 基础 </tag>
+            
+            <tag> JVM </tag>
             
             <tag> 类加载器 </tag>
             
@@ -107,11 +136,11 @@
       
         <tags>
             
+            <tag> 基础 </tag>
+            
             <tag> JVM </tag>
             
             <tag> 机制 </tag>
-            
-            <tag> 基础 </tag>
             
         </tags>
       
@@ -136,9 +165,9 @@
       
         <tags>
             
-            <tag> JVM </tag>
-            
             <tag> 基础 </tag>
+            
+            <tag> JVM </tag>
             
             <tag> 类的加载 </tag>
             
