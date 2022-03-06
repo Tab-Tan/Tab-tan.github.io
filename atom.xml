@@ -157,9 +157,9 @@
       <category term="JVM" scheme="http://tab-tan.github.io/categories/JVM/"/>
     
     
-      <category term="JVM" scheme="http://tab-tan.github.io/tags/JVM/"/>
-    
       <category term="基础" scheme="http://tab-tan.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="JVM" scheme="http://tab-tan.github.io/tags/JVM/"/>
     
       <category term="方法区" scheme="http://tab-tan.github.io/tags/%E6%96%B9%E6%B3%95%E5%8C%BA/"/>
     
@@ -188,9 +188,9 @@
       <category term="JVM" scheme="http://tab-tan.github.io/categories/JVM/"/>
     
     
-      <category term="JVM" scheme="http://tab-tan.github.io/tags/JVM/"/>
-    
       <category term="基础" scheme="http://tab-tan.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="JVM" scheme="http://tab-tan.github.io/tags/JVM/"/>
     
       <category term="堆" scheme="http://tab-tan.github.io/tags/%E5%A0%86/"/>
     
@@ -221,9 +221,9 @@
       <category term="JVM" scheme="http://tab-tan.github.io/categories/JVM/"/>
     
     
-      <category term="JVM" scheme="http://tab-tan.github.io/tags/JVM/"/>
-    
       <category term="基础" scheme="http://tab-tan.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="JVM" scheme="http://tab-tan.github.io/tags/JVM/"/>
     
       <category term="栈" scheme="http://tab-tan.github.io/tags/%E6%A0%88/"/>
     
@@ -254,9 +254,9 @@
       <category term="JVM" scheme="http://tab-tan.github.io/categories/JVM/"/>
     
     
-      <category term="JVM" scheme="http://tab-tan.github.io/tags/JVM/"/>
-    
       <category term="基础" scheme="http://tab-tan.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="JVM" scheme="http://tab-tan.github.io/tags/JVM/"/>
     
       <category term="栈" scheme="http://tab-tan.github.io/tags/%E6%A0%88/"/>
     
@@ -284,9 +284,9 @@
       <category term="JVM" scheme="http://tab-tan.github.io/categories/JVM/"/>
     
     
-      <category term="JVM" scheme="http://tab-tan.github.io/tags/JVM/"/>
-    
       <category term="基础" scheme="http://tab-tan.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="JVM" scheme="http://tab-tan.github.io/tags/JVM/"/>
     
       <category term="类加载器" scheme="http://tab-tan.github.io/tags/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8/"/>
     
@@ -315,11 +315,11 @@
       <category term="JVM" scheme="http://tab-tan.github.io/categories/JVM/"/>
     
     
+      <category term="基础" scheme="http://tab-tan.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
       <category term="JVM" scheme="http://tab-tan.github.io/tags/JVM/"/>
     
       <category term="机制" scheme="http://tab-tan.github.io/tags/%E6%9C%BA%E5%88%B6/"/>
-    
-      <category term="基础" scheme="http://tab-tan.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
@@ -345,9 +345,9 @@
       <category term="JVM" scheme="http://tab-tan.github.io/categories/JVM/"/>
     
     
-      <category term="JVM" scheme="http://tab-tan.github.io/tags/JVM/"/>
-    
       <category term="基础" scheme="http://tab-tan.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="JVM" scheme="http://tab-tan.github.io/tags/JVM/"/>
     
       <category term="类的加载" scheme="http://tab-tan.github.io/tags/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD/"/>
     
