@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://tab-tan.github.io/2022/03/06/validate%E4%B8%8E%E5%9B%BD%E9%99%85%E5%8C%96%E9%85%8D%E5%90%88%E6%95%88%E6%9E%9C%E6%9B%B4%E5%8A%A0/</loc>
+    
+    <lastmod>2022-03-06T03:33:46.108Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://tab-tan.github.io/2022/03/05/ElasticSearch-filebeat-logstash-kibana-%E7%89%88%E6%9C%AC7-14-0/</loc>
     
     <lastmod>2022-03-05T15:03:29.676Z</lastmod>
