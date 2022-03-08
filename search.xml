@@ -155,9 +155,9 @@
       
         <tags>
             
-            <tag> 基础 </tag>
-            
             <tag> JVM </tag>
+            
+            <tag> 基础 </tag>
             
             <tag> 方法区 </tag>
             
@@ -184,9 +184,9 @@
       
         <tags>
             
-            <tag> 基础 </tag>
-            
             <tag> JVM </tag>
+            
+            <tag> 基础 </tag>
             
             <tag> 堆 </tag>
             
@@ -213,9 +213,9 @@
       
         <tags>
             
-            <tag> 基础 </tag>
-            
             <tag> JVM </tag>
+            
+            <tag> 基础 </tag>
             
             <tag> 栈 </tag>
             
@@ -242,9 +242,9 @@
       
         <tags>
             
-            <tag> 基础 </tag>
-            
             <tag> JVM </tag>
+            
+            <tag> 基础 </tag>
             
             <tag> 栈 </tag>
             
@@ -271,9 +271,9 @@
       
         <tags>
             
-            <tag> 基础 </tag>
-            
             <tag> JVM </tag>
+            
+            <tag> 基础 </tag>
             
             <tag> 类加载器 </tag>
             
@@ -300,11 +300,11 @@
       
         <tags>
             
-            <tag> 基础 </tag>
-            
             <tag> JVM </tag>
             
             <tag> 机制 </tag>
+            
+            <tag> 基础 </tag>
             
         </tags>
       
@@ -329,9 +329,9 @@
       
         <tags>
             
-            <tag> 基础 </tag>
-            
             <tag> JVM </tag>
+            
+            <tag> 基础 </tag>
             
             <tag> 类的加载 </tag>
             
