@@ -6,7 +6,7 @@
   <link href="/tabtan/atom.xml" rel="self"/>
   
   <link href="http://tab-tan.gitee.io/tabtan/"/>
-  <updated>2022-03-06T03:33:46.108Z</updated>
+  <updated>2022-03-10T13:24:15.461Z</updated>
   <id>http://tab-tan.gitee.io/tabtan/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>教你快速上手springboot</title>
+    <link href="http://tab-tan.gitee.io/tabtan/2022/03/10/%E6%95%99%E4%BD%A0%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bspringboot/"/>
+    <id>http://tab-tan.gitee.io/tabtan/2022/03/10/%E6%95%99%E4%BD%A0%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bspringboot/</id>
+    <published>2022-03-10T13:17:23.000Z</published>
+    <updated>2022-03-10T13:24:15.461Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h4><blockquote><p>idea软件，java8环境，maven环境</p></blockquote><blockquote><p>前言：什么是maven？大家学校里学习的时候，老师会把用到的依赖以jar包的方式给你教你导入项目。比如数据库驱动，学习jdbc导入过吧？但是随着项目越来越大，会有无数个jar包需要导入，很繁琐难以管理。于是maven诞生了，你只需要在pom.xml中指定依赖，就可以从网络下载jar包到本地进行管理。当你不需要用这个依赖的时候就从pom.xml中将他删除。pom.xml是项目中maven的配置文件，下面会说到具体用法。</p></blockquote><h4 id="项目准备"><a href="#项目准备" class="headerlink" title="项目准备"></a>项目准备</h4><p>1 创建springboot项目</p><p><img src= "/tabtan/img/loading.gif" data-src="https://oscimg.oschina.net/oscnet/up-23ee718f3ea1c442eb9ec4203d1bcec2004.png" alt=""></p><p>或者这样：</p><p><img src= "/tabtan/img/loading.gif" data-src="https://oscimg.oschina.net/oscnet/up-c29418fb85feb83fec9b3c91304c10d576b.png" alt=""></p><p><img src= "/tabtan/img/loading.gif" data-src="https://oscimg.oschina.net/oscnet/up-52966a8554c908f5be9a322a205cdbd5bf4.png" alt=""></p><p>点击next</p><p><img src= "/tabtan/img/loading.gif" data-src="https://oscimg.oschina.net/oscnet/up-a407839e00d2d6b4cbf681bf25552a6d99c.png" alt=""></p><p>点击finish</p><p><img src= "/tabtan/img/loading.gif" data-src="https://oscimg.oschina.net/oscnet/up-975e6c263375c36f01249d0fa9f0543dfcf.png" alt=""></p><p>为了清晰我们把没用的这些选中的文件删掉</p><p><img src= "/tabtan/img/loading.gif" data-src="https://oscimg.oschina.net/oscnet/up-119a372fe8c8423dcf304be98a4f660c74b.png" alt=""></p><p>项目结构和介绍如下</p><p><img src= "/tabtan/img/loading.gif" data-src="https://oscimg.oschina.net/oscnet/up-938c385ef5bb9c8e606ac0725cc3b4be4e3.png" alt=""></p><p>注意看项目的第二个文件，就是笔者在前言提到的maven，我们打开看一下。</p><p><img src= "/tabtan/img/loading.gif" data-src="https://oscimg.oschina.net/oscnet/up-6efdb6d160b62a9e106b00369331a0c8f4d.png" alt=""></p><p><img src= "/tabtan/img/loading.gif" data-src="https://oscimg.oschina.net/oscnet/up-5b87397f8fd76f5a43471167c7a37339cce.png" alt=""></p><p><img src= "/tabtan/img/loading.gif" data-src="https://oscimg.oschina.net/oscnet/up-0ea0822e0531f462c71a1ee9c06fd04257d.png" alt=""></p><p>下面我们写一个页面，然后用springboot启动项目访问他。</p><h4 id="helloworld"><a href="#helloworld" class="headerlink" title="helloworld"></a>helloworld</h4><p>在<code>resources/templates</code>新建前端页面<code>hello.html</code></p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>HELLOWORLD<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>HELLO WORLD!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure><p><img src= "/tabtan/img/loading.gif" data-src="https://oscimg.oschina.net/oscnet/up-c1ae440e06319106ad7b8e0e299175d08aa.png" alt=""></p><p>新建controller层类HelloController(控制层，接收前端请求)：</p><p><img src= "/tabtan/img/loading.gif" data-src="https://oscimg.oschina.net/oscnet/up-745f6278638657e8783e433d5be1bf6394b.png" alt=""></p><p><img src= "/tabtan/img/loading.gif" data-src="https://oscimg.oschina.net/oscnet/up-cbd33cffdda7de78fd3180d4467ce185217.png" alt="">)<img src= "/tabtan/img/loading.gif" data-src="https://oscimg.oschina.net/oscnet/up-00d5a0c390cc14f8fd841f2e79d184220f6.png" alt=""></p><p><img src= "/tabtan/img/loading.gif" data-src="https://oscimg.oschina.net/oscnet/up-f91181e3216d7afee9d0e34ba79182c9789.png" alt=""></p><p>在HelloController中填写代码：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"hello"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hello"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>代码解释：</p><p><img src= "/tabtan/img/loading.gif" data-src="https://oscimg.oschina.net/oscnet/up-d786ba3eb112da1a701f200874f5fc2f2ac.png" alt=""></p><p>最后一步：修改配置文件，启动。</p><p>在<code>resources/application.properties</code>中添加如下代码：</p><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">server.port</span>=<span class="string">80</span></span><br></pre></td></tr></table></figure><p><img src= "/tabtan/img/loading.gif" data-src="https://oscimg.oschina.net/oscnet/up-681c57fb59edc4ca6770398c2d3be4b3c2c.png" alt=""></p><p>运行：</p><p><img src= "/tabtan/img/loading.gif" data-src="https://oscimg.oschina.net/oscnet/up-215012e9120a28cae805cf13eabd7efb9aa.png" alt=""></p><p>效果：</p><blockquote><p>如果出现找不到主类重启一下软件。</p></blockquote><p><img src= "/tabtan/img/loading.gif" data-src="https://oscimg.oschina.net/oscnet/up-6ecc4a4245bfe4b5ed0792b5805da3ef2c3.png" alt=""></p><p>内置的Tomcat在80端口启动成功，我们访问<a href="http://localhost:80/hello" target="_blank" rel="noopener" title="http://localhost:80/hello">http://localhost:80/hello</a>试一下。</p><p><img src= "/tabtan/img/loading.gif" data-src="https://oscimg.oschina.net/oscnet/up-5ece7d94e1065fc51e6a17d5d0d47189814.png" alt=""></p><p>好啦，上手demo就到这里啦，小白总有一天会成为大佬，加油小伙伴。<br>如果喜欢可以关注我的其他平台，链接如下，按心情持续输出哟~<br>博客地址：<br><a href="https://tab-tan.gitee.io/tabtan/" title="gitee">gitee</a>，<a href="https://tab-tan.github.io/" target="_blank" rel="noopener" title="github">github</a>,<a href="https://my.oschina.net/u/5336693" target="_blank" rel="noopener" title="开源中国">开源中国</a>，<a href="https://blog.csdn.net/rfAsfassdASD" target="_blank" rel="noopener" title="csdn">csdn</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;环境准备&quot;&gt;&lt;a href=&quot;#环境准备&quot; class=&quot;headerlink&quot; title=&quot;环境准备&quot;&gt;&lt;/a&gt;环境准备&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;idea软件，java8环境，maven环境&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockqu
+      
+    
+    </summary>
+    
+    
+      <category term="springboot" scheme="http://tab-tan.gitee.io/tabtan/categories/springboot/"/>
+    
+    
+      <category term="springboot教程" scheme="http://tab-tan.gitee.io/tabtan/tags/springboot%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>validate与国际化配合效果更加~</title>
@@ -103,20 +132,20 @@
   </entry>
   
   <entry>
-    <title>抽象工厂模式</title>
-    <link href="http://tab-tan.gitee.io/tabtan/2020/08/17/%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/"/>
-    <id>http://tab-tan.gitee.io/tabtan/2020/08/17/%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</id>
+    <title>建造者模式</title>
+    <link href="http://tab-tan.gitee.io/tabtan/2020/08/17/%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://tab-tan.gitee.io/tabtan/2020/08/17/%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/</id>
     <published>2020-08-17T00:20:54.000Z</published>
-    <updated>2020-08-17T01:56:50.967Z</updated>
+    <updated>2020-08-17T02:09:42.197Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p><em>为创建一组相关或相互依赖的对象提供一个接口，而且无需指定他们的具体类。即工厂内造工厂。</em></p><h3 id="优点-amp-amp-缺点"><a href="#优点-amp-amp-缺点" class="headerlink" title="优点&amp;&amp;缺点"></a>优点&amp;&amp;缺点</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><blockquote><ul><li>产品族内的约束为非公开状态，在不同的工厂中各种产品之间可能具有不同的相互依赖关系，这些依赖关系由工厂封装在其内部，对于工厂的使用者来说这些依赖是不可见的。</li><li>生产线的扩展非常容易。如果要针对同一产品族建立新的生产线，只需实现产品族中的所有产品接口并建立新的工厂类即可。</li></ul></blockquote><h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><blockquote><p>产品族本身的扩展非常困难。如果产品族中增加一个新产品类型，则需要修改多个接口，并且会影响已有的工厂类。</p></blockquote><h3 id="抽象工厂实例"><a href="#抽象工厂实例" class="headerlink" title="抽象工厂实例"></a>抽象工厂实例</h3><p>实例已上传至github，附上地址:<a href="https://github.com/Tab-Tan/design/tree/master/factory/abstractFac" target="_blank" rel="noopener">https://github.com/Tab-Tan/design/tree/master/factory/abstractFac</a></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p><em>建造者模式也叫生成器模式。将一个复杂的对象构建与它的表示分离，使得同样的构建过程可以构建不同的表示。</em></p><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><blockquote><ul><li>封装性，使用建造者模式可以使客户端不必知道产品内部组成的细节。</li><li>建造者独立，容易扩展。</li><li>便于控制细节风险。由于具体的建造者是独立的，因此可以对建造者过程逐步细化，而不对其他模块产生任何影响。</li></ul></blockquote><h3 id="建造者模式实例"><a href="#建造者模式实例" class="headerlink" title="建造者模式实例"></a>建造者模式实例</h3><p>实例已上传至github，附上地址:<a href="https://github.com/Tab-Tan/design/tree/master/builder" target="_blank" rel="noopener">https://github.com/Tab-Tan/design/tree/master/builder</a></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h3 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h3&gt;&lt;p&gt;&lt;em&gt;为创建一组相关或相互依赖的对象提供一个接口，而且无需指定他们的具体类。即工厂内造工厂。&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id=&quot;优点-am
+        &lt;h3 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h3&gt;&lt;p&gt;&lt;em&gt;建造者模式也叫生成器模式。将一个复杂的对象构建与它的表示分离，使得同样的构建过程可以构建不同的表示。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id
       
     
     </summary>
@@ -132,20 +161,20 @@
   </entry>
   
   <entry>
-    <title>建造者模式</title>
-    <link href="http://tab-tan.gitee.io/tabtan/2020/08/17/%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/"/>
-    <id>http://tab-tan.gitee.io/tabtan/2020/08/17/%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/</id>
+    <title>抽象工厂模式</title>
+    <link href="http://tab-tan.gitee.io/tabtan/2020/08/17/%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://tab-tan.gitee.io/tabtan/2020/08/17/%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</id>
     <published>2020-08-17T00:20:54.000Z</published>
-    <updated>2020-08-17T02:09:42.197Z</updated>
+    <updated>2020-08-17T01:56:50.967Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p><em>建造者模式也叫生成器模式。将一个复杂的对象构建与它的表示分离，使得同样的构建过程可以构建不同的表示。</em></p><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><blockquote><ul><li>封装性，使用建造者模式可以使客户端不必知道产品内部组成的细节。</li><li>建造者独立，容易扩展。</li><li>便于控制细节风险。由于具体的建造者是独立的，因此可以对建造者过程逐步细化，而不对其他模块产生任何影响。</li></ul></blockquote><h3 id="建造者模式实例"><a href="#建造者模式实例" class="headerlink" title="建造者模式实例"></a>建造者模式实例</h3><p>实例已上传至github，附上地址:<a href="https://github.com/Tab-Tan/design/tree/master/builder" target="_blank" rel="noopener">https://github.com/Tab-Tan/design/tree/master/builder</a></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p><em>为创建一组相关或相互依赖的对象提供一个接口，而且无需指定他们的具体类。即工厂内造工厂。</em></p><h3 id="优点-amp-amp-缺点"><a href="#优点-amp-amp-缺点" class="headerlink" title="优点&amp;&amp;缺点"></a>优点&amp;&amp;缺点</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><blockquote><ul><li>产品族内的约束为非公开状态，在不同的工厂中各种产品之间可能具有不同的相互依赖关系，这些依赖关系由工厂封装在其内部，对于工厂的使用者来说这些依赖是不可见的。</li><li>生产线的扩展非常容易。如果要针对同一产品族建立新的生产线，只需实现产品族中的所有产品接口并建立新的工厂类即可。</li></ul></blockquote><h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><blockquote><p>产品族本身的扩展非常困难。如果产品族中增加一个新产品类型，则需要修改多个接口，并且会影响已有的工厂类。</p></blockquote><h3 id="抽象工厂实例"><a href="#抽象工厂实例" class="headerlink" title="抽象工厂实例"></a>抽象工厂实例</h3><p>实例已上传至github，附上地址:<a href="https://github.com/Tab-Tan/design/tree/master/factory/abstractFac" target="_blank" rel="noopener">https://github.com/Tab-Tan/design/tree/master/factory/abstractFac</a></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h3 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h3&gt;&lt;p&gt;&lt;em&gt;建造者模式也叫生成器模式。将一个复杂的对象构建与它的表示分离，使得同样的构建过程可以构建不同的表示。&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id
+        &lt;h3 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h3&gt;&lt;p&gt;&lt;em&gt;为创建一组相关或相互依赖的对象提供一个接口，而且无需指定他们的具体类。即工厂内造工厂。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&quot;优点-am
       
     
     </summary>
